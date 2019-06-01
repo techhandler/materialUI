@@ -3,12 +3,12 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import * as contentful from 'contentful'
 import Course from '../components/Course'
-const SPACE_ID = '[INSERT CONTENTFUL SPACE ID]'
-const ACCESS_TOKEN = '[INSERT CONTENTFUL ACCESS TOKEN]'
+const SPACE_ID = '3qhb77jswm7f';
+const ACCESS_TOKEN = 't6WwjqsQ7W_Ar7XIyuIRcB3GJCVPg2-Kd7HjhY83TL4';
 const client = contentful.createClient({
   space: SPACE_ID,
   accessToken: ACCESS_TOKEN
-})
+});
 class CoursesList extends Component {
   state = {
     courses: [],
@@ -24,7 +24,7 @@ class CoursesList extends Component {
       query: this.state.searchString
     })
       .then((response) => {
-        this.setState({courses: response.items})
+        this.setState({courses: response.items||[]})
         console.log(this.state.courses)
       })
       .catch((error) => {
